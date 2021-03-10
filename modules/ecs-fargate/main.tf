@@ -2,9 +2,8 @@
 
 
 data "template_file" "my-first-app" {
-  template = file("./template/ecs-task.json.tpl")
+  template = file("../../template/ecs-task.json.tpl")
 }
-
 
 
 # creating a cluster for the ecs-fargate service
