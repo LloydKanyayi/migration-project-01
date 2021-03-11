@@ -1,10 +1,5 @@
 #---------- eu-west-dev-env/main.tf
 
-module "providers" {
-  source     = "../../modules/providers"
-  aws_region = var.eu_region
-}
-
 module "networking" {
   source   = "../../modules/networking"
   vpc_cidr = "172.0.0.0/16"
@@ -25,3 +20,4 @@ module "ecs-fargate" {
 
   alb_listener_front_end = module.alb.alb_listener_front_end
 }
+
