@@ -1,14 +1,9 @@
 #-------------root/main.tf
 
 
-module "providers" {
-  source     = "../../modules/providers"
-  aws_region = var.us_region
-}
-
 module "networking" {
   source   = "../../modules/networking"
-  vpc_cidr = var.vpc_cidr
+  vpc_cidr = "10.123.0.0/16"
 }
 
 module "alb" {
