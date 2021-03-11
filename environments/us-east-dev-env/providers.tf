@@ -3,6 +3,6 @@
 
 provider "aws" {
   region                   = var.aws_region
-  shared_credentials_file  = "/Users/lloyd.kanyayi/.aws/creds"
-  profile                  = "customprofile"
+  shared_credentials_file  = "/Users/lloyd.kanyayi/.aws/credentials"
+  profile                  = "default"
 }
