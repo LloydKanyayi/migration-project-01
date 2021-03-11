@@ -7,8 +7,8 @@ variable "aws_region" {
 }
 
 variable "aws_access_key" {
-  default = "AKIAY74DGCZERWH6UTQ4"
+  default = ""
 }
 variable "aws_secret_key" {
-  default = "G/RixHKQArtCMK1ap/vDtEkXgANc/hsKRYGkiUau"
+  default = ""
 }
