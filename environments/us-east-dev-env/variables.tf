@@ -1,9 +1,14 @@
-#---------- root/variables.tf
+#---------- eu-west-dev-env/variables.tf
 
-variable "us_region" {
+
+
+variable "aws_region" {
   default = "us-east-1"
 }
 
-variable "vpc_cidr" {
-  default = "10.123.0.0/16"
+variable "aws_access_key" {
+  default = "AKIA4HAWHPN445I36BBA"
+}
+variable "aws_secret_key" {
+  default = "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"
 }
