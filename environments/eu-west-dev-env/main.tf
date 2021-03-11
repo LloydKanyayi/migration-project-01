@@ -2,7 +2,7 @@
 
 module "networking" {
   source   = "../../modules/networking"
-  vpc_cidr = "172.0.0.0/16"
+  vpc_cidr = "10.0.0.0/16"
 }
 
 
