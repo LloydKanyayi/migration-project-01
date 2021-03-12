@@ -1,4 +1,4 @@
-#-------------root/main.tf
+#-------------us-east-dev-env/main.tf
 
 
 module "networking" {
@@ -19,4 +19,12 @@ module "ecs-fargate" {
   vpc_id                   = module.networking.vpc_id
 
   alb_listener_front_end = module.alb.alb_listener_front_end
+
+  cluster_name = var.cluster_name
+  container_name = var.container_name
+  ecs_family_name = var.ecs_family_name
+  ecs_security = var.ecs_security
+  ecs_service = var.ecs_service
+  iam_role_name = var.iam_role_name
+
 }

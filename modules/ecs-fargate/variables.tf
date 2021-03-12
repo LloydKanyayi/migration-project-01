@@ -18,3 +18,18 @@ variable "vpc_id" {
 variable "alb_listener_front_end" {}
 
 
+variable "cluster_name" {}
+
+
+variable "ecs_service" {}
+
+
+variable "container_name" {}
+
+
+variable "ecs_family_name" {}
+
+variable "ecs_security" {}
+
+
+variable "iam_role_name" {}

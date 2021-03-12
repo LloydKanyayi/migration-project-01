@@ -5,20 +5,19 @@ data "template_file" "my-first-app" {
   template = file("../../template/ecs-task.json.tpl")
 }
 
-
 # creating a cluster for the ecs-fargate service
 
+
 resource "aws_ecs_cluster" "main" {
-  name = "myapp-cluster"
+  name = var.cluster_name
 }
 
 
 # creating a service for the ecs-fargate service
 
 
-
 resource "aws_ecs_service" "main" {
-  name            = "myapp-service"
+  name            = var.ecs_service
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.main.arn
   desired_count   = 2
@@ -32,7 +31,7 @@ resource "aws_ecs_service" "main" {
 
   load_balancer {
     target_group_arn = var.aws_alb_target_group_arn
-    container_name   = "my-first-app"
+    container_name   = var.container_name
     container_port   = var.container_port
   }
   depends_on = [var.alb_listener_front_end, aws_iam_role_policy_attachment.ecs-task-execution-role-policy-attachment]
@@ -45,8 +44,9 @@ resource "aws_ecs_service" "main" {
 
 # creating Task Definition for the ecs-fargate service
 
+
 resource "aws_ecs_task_definition" "main" {
-  family                   = "myapp-task"
+  family                   = var.ecs_family_name
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = 256
@@ -57,7 +57,7 @@ resource "aws_ecs_task_definition" "main" {
 
 
 resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "my-app-role"
+  name = var.iam_role_name
 
   assume_role_policy = <<EOF
 {
@@ -85,8 +85,9 @@ resource "aws_iam_role_policy_attachment" "ecs-task-execution-role-policy-attach
 
 # creating Security group for ecs-fargate service
 
+
 resource "aws_security_group" "ecs_tasks" {
-  name   = "ecs-security"
+  name   = var.ecs_security
   vpc_id = var.vpc_id
 
   ingress {
