@@ -3,7 +3,13 @@
 
 data "template_file" "my-first-app" {
   template = file("../../template/ecs-task.json.tpl")
+
+  vars = {
+    container_name = var.container_name
+  }
 }
+
+
 
 # creating a cluster for the ecs-fargate service
 
@@ -49,8 +55,8 @@ resource "aws_ecs_task_definition" "main" {
   family                   = var.ecs_family_name
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  cpu                      = 256
-  memory                   = 512
+  cpu                      = 1024
+  memory                   = 2048
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   container_definitions    = data.template_file.my-first-app.rendered
 }

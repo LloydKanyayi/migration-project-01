@@ -1,9 +1,9 @@
 [
   {
-    "name": "my-first-app",
-    "image": "nginxdemos/hello",
-    "cpu": 256,
-    "memory": 512,
+    "name": "${container_name}",
+    "image": "wordpress",
+    "cpu": 1024,
+    "memory": 2048,
     "essential": true,
     "portMappings": [
       {

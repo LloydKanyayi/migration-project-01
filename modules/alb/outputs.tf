@@ -9,5 +9,9 @@ output "alb_listener_front_end" {
 }
 
 output "alb_id" {
-  value = aws_alb.main.id
+  value = aws_alb.main.zone_id
+}
+
+output "alb_name" {
+  value = aws_alb.main
 }
